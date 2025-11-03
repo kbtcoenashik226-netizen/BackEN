@@ -1,2 +1,14 @@
-{"type": "module","scripts":{"start":"node server.js"},"dependencies":{"body-parser":"^2.2.0","cors":"^2.8.5","docx":"^9.5.1","express":"^5.1.0","path":"^0.12.7","url":"^0.11.4"}}
-
+{
+    "type": "module",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "body-parser": "^2.2.0",
+        "cors": "^2.8.5",
+        "docx": "^9.5.1",
+        "express": "^5.1.0",
+        "path": "^0.12.7",
+        "url": "^0.11.4"
+    }
+}
