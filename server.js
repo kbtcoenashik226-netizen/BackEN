@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { Document, Packer, Paragraph, HeadingLevel, TextRun } from "docx";
+import fs from "fs";
+
 
 const app = express();
 app.use(cors());
@@ -83,28 +85,29 @@ app.post("/final-report", async (req, res) => {
         new Paragraph({ text: `Total Opening Area (Ah): ${intakeWell.Ah} m²` }),
         new Paragraph({ text: `Area of One Screen: ${intakeWell.oneScreenArea} m²` }),
         new Paragraph({ text: `Height of Screen (h): ${intakeWell.h} m` }),
-      ];
-       new Paragraph({
-      children: [
-        new ImageRun({
-          data: fs.readFileSync("images/img1.png"), // <-- your PNG path
-          transformation: {
-            width: 400,
-            height: 250,
-          },
+
+        new Paragraph({
+          children: [
+            new ImageRun({
+              data: fs.readFileSync("images/img1.png"), // <-- your PNG path
+              transformation: {
+                width: 400,
+                height: 250,
+              },
+            }),
+          ],
         }),
-      ],
-    }),
-     new Paragraph({ text: `Where,` }),
+        new Paragraph({ text: `Where,` }),
         new Paragraph({ text: `d1: ${intakeWell.d1} m` }),
-        new Paragraph({ text: `d2: ${intakeWell.d2} m` })
-        new Paragraph({ text: `D: ${intakeWell.D} m` })
+        new Paragraph({ text: `d2: ${intakeWell.d2} m` }),
+        new Paragraph({ text: `D: ${intakeWell.D} m` }),
         // new Paragraph({ text: `No. of Pipes: ${pumpDesign.H} m` })
-        new Paragraph({ text: `dia: ${intakeWell.dia} m` })
+        new Paragraph({ text: `dia: ${intakeWell.dia} m` }),
         new Paragraph({ text: `Diameter of Jackwell: ${intakeWell.D} m` })
+      ];
     }
 
-   
+
 
     // ⚙️ PUMP DESIGN
     let pdSection = [];
