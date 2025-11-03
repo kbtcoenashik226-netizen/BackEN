@@ -3,7 +3,11 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import { Document, Packer, Paragraph, HeadingLevel, TextRun } from "docx";
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
@@ -89,7 +93,8 @@ app.post("/final-report", async (req, res) => {
         new Paragraph({
           children: [
             new ImageRun({
-              data: fs.readFileSync("images/img1.png"), // <-- your PNG path
+              data: fs.readFileSync(
+                path.join(__dirname, "public", "images", "img1.png")), // <-- your PNG path
               transformation: {
                 width: 400,
                 height: 250,
@@ -127,7 +132,7 @@ app.post("/final-report", async (req, res) => {
         new Paragraph({
           children: [
             new ImageRun({
-              data: fs.readFileSync("images/img2.png"), // <-- your PNG path
+              data: fs.readFileSync(path.join(__dirname, "public", "images", "img2.png")), // <-- your PNG path
               transformation: {
                 width: 400,
                 height: 250,
@@ -161,7 +166,7 @@ app.post("/final-report", async (req, res) => {
         new Paragraph({
           children: [
             new ImageRun({
-              data: fs.readFileSync("images/img3.png"), // <-- your PNG path
+              data: fs.readFileSync(path.join(__dirname, "public", "images", "img3.png")), // <-- your PNG path
               transformation: {
                 width: 400,
                 height: 250,
@@ -197,7 +202,7 @@ app.post("/final-report", async (req, res) => {
         new Paragraph({
           children: [
             new ImageRun({
-              data: fs.readFileSync("images/img4.png"), // <-- your PNG path
+              data: fs.readFileSync(path.join(__dirname, "public", "images", "img4.png")), // <-- your PNG path
               transformation: {
                 width: 400,
                 height: 250,
@@ -234,7 +239,7 @@ app.post("/final-report", async (req, res) => {
         new Paragraph({
           children: [
             new ImageRun({
-              data: fs.readFileSync("images/img5.png"), // <-- your PNG path
+              data: fs.readFileSync(path.join(__dirname, "public", "images", "img5.png")), // <-- your PNG path
               transformation: {
                 width: 400,
                 height: 250,
