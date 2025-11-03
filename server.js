@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import { Document, Packer, Paragraph, HeadingLevel, TextRun } from "docx";
+import { Document, Packer, Paragraph, HeadingLevel, TextRun, ImageRun } from "docx";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -371,7 +371,8 @@ app.post("/final-report", async (req, res) => {
       "Content-Type",
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     );
-    res.send(buffer);
+    // res.send(buffer);
+    res.end(Buffer.from(buffer));
   } catch (err) {
     console.error("Error:", err);
     res.status(500).send("Error generating report");
